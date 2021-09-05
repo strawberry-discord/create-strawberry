@@ -15,13 +15,19 @@ You can change this in \`src/cli.ts\`.
 create('create-strawberry', {
   templateRoot,
   extra: {
-    architecture: {
-      type: 'list',
-      describe: 'choose your fave os',
-      choices: ['macOS', 'Windows', 'Linux'],
-      prompt: 'if-no-arg',
+    doStem: {
+      type: 'checkbox',
+      describe: 'Create a strawberry-stem project? (beta)',
+      prompt: "if-no-arg",
+      choices: ["stem"]
+    },
+    features: {
+      type: 'checkbox',
+      describe: 'What features should this bot include?',
+      prompt: "if-no-arg",
+      choices: ["multi-server", "slash-commands", "commands", "database"]
     },
   },
-  after: ({ answers }) => console.log(`Ok you chose ${answers.architecture}.`),
+  after: ({ answers }) => console.log(`Ok you chose ${answers.doStem}.`),
   caveat,
 });
